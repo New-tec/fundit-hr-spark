@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
+import { useAuth } from "@/contexts/AuthContext";
 import {
   LayoutDashboard,
   Users,
@@ -34,6 +35,7 @@ const navItems = [
 
 export default function AppLayout({ children }: { children: React.ReactNode }) {
   const [collapsed, setCollapsed] = useState(false);
+  const { user, role, signOut } = useAuth();
   const location = useLocation();
 
   return (
@@ -105,13 +107,26 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
             </button>
             <div className="flex items-center gap-3">
               <div className="w-9 h-9 rounded-full stat-card-gradient flex items-center justify-center">
-                <span className="text-primary-foreground text-sm font-semibold">AO</span>
+                <span className="text-primary-foreground text-sm font-semibold">
+                  {user?.user_metadata?.full_name?.charAt(0)?.toUpperCase() || user?.email?.charAt(0)?.toUpperCase() || "U"}
+                </span>
               </div>
               <div className="hidden sm:block">
-                <p className="text-sm font-medium text-foreground">Akinsola O.</p>
-                <p className="text-xs text-muted-foreground">Super Admin</p>
+                <p className="text-sm font-medium text-foreground">
+                  {user?.user_metadata?.full_name || user?.email?.split("@")[0] || "User"}
+                </p>
+                <p className="text-xs text-muted-foreground capitalize">
+                  {role === "admin" ? "Admin" : "HR Staff"}
+                </p>
               </div>
             </div>
+            <button
+              onClick={signOut}
+              className="p-2 rounded-lg hover:bg-secondary transition-colors text-muted-foreground hover:text-foreground"
+              title="Sign out"
+            >
+              <LogOut className="w-5 h-5" />
+            </button>
           </div>
         </header>
 
