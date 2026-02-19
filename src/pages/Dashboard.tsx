@@ -1,4 +1,5 @@
 import { Card } from "@/components/ui/card";
+import { useAuth } from "@/contexts/AuthContext";
 import {
   Users,
   UserPlus,
@@ -72,11 +73,14 @@ const pendingApprovals = [
 ];
 
 export default function Dashboard() {
+  const { user } = useAuth();
+  const firstName = user?.user_metadata?.full_name?.split(" ")[0] || "there";
+
   return (
     <div className="space-y-6 animate-fade-in">
       {/* Welcome */}
       <div>
-        <h2 className="text-2xl font-bold text-foreground">Welcome back, Akinsola 👋</h2>
+        <h2 className="text-2xl font-bold text-foreground">Welcome back, {firstName} 👋</h2>
         <p className="text-muted-foreground mt-1">Here's what's happening across your client companies today.</p>
       </div>
 
