@@ -19,6 +19,13 @@ import Reports from "./pages/Reports";
 import SettingsPage from "./pages/Settings";
 import Login from "./pages/Login";
 import NotFound from "./pages/NotFound";
+import ExitManagement from "./pages/ExitManagement";
+import Attendance from "./pages/Attendance";
+import Promotion from "./pages/Promotion";
+import Announcements from "./pages/Announcements";
+import Confirmation from "./pages/Confirmation";
+import ApprovalWorkflow from "./pages/ApprovalWorkflow";
+import Grievances from "./pages/Grievances";
 
 const queryClient = new QueryClient();
 
@@ -48,6 +55,13 @@ const App = () => (
                       <Route path="/documents" element={<Documents />} />
                       <Route path="/reports" element={<Reports />} />
                       <Route path="/settings" element={<SettingsPage />} />
+                      <Route path="/exit-management" element={<ExitManagement />} />
+                      <Route path="/attendance" element={<Attendance />} />
+                      <Route path="/promotion" element={<Promotion />} />
+                      <Route path="/announcements" element={<Announcements />} />
+                      <Route path="/confirmation" element={<Confirmation />} />
+                      <Route path="/approval-workflow" element={<ApprovalWorkflow />} />
+                      <Route path="/grievances" element={<Grievances />} />
                       <Route path="*" element={<NotFound />} />
                     </Routes>
                   </AppLayout>
