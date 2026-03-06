@@ -4,45 +4,35 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ─── DEFAULT (FUNDiT base) theme ──────────────────────────────── */
 @layer base {
   :root {
     --background: 210 20% 98%;
     --foreground: 213 39% 15%;
-
     --card: 0 0% 100%;
     --card-foreground: 213 39% 15%;
-
     --popover: 0 0% 100%;
     --popover-foreground: 213 39% 15%;
-
     --primary: 213 72% 16%;
     --primary-foreground: 0 0% 100%;
-
     --secondary: 210 25% 95%;
     --secondary-foreground: 213 39% 15%;
-
     --muted: 210 20% 93%;
     --muted-foreground: 213 10% 47%;
-
     --accent: 0 70% 48%;
     --accent-foreground: 0 0% 100%;
-
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
-
     --border: 213 20% 90%;
     --input: 213 20% 90%;
     --ring: 213 72% 16%;
-
     --radius: 0.625rem;
-
     --success: 152 60% 40%;
     --success-foreground: 0 0% 100%;
     --warning: 38 92% 50%;
     --warning-foreground: 0 0% 100%;
     --info: 210 80% 52%;
     --info-foreground: 0 0% 100%;
-
     --sidebar-background: 213 72% 16%;
     --sidebar-foreground: 213 20% 85%;
     --sidebar-primary: 0 0% 100%;
@@ -55,23 +45,89 @@
   }
 }
 
-@layer base {
-  * {
-    @apply border-border;
-  }
+/* ─── CAPITALCORP theme ─────────────────────────────────────────── */
+/* Primary: #1B3A6B (deep navy)  Accent: #3AAFE4 (electric cyan)   */
+[data-org="capitalcorp"] {
+  --background: 213 40% 97%;       /* #F5F8FC */
+  --foreground: 213 50% 12%;
+  --card: 0 0% 100%;
+  --card-foreground: 213 50% 12%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 213 50% 12%;
+  --primary: 214 59% 26%;          /* #1B3A6B */
+  --primary-foreground: 0 0% 100%;
+  --secondary: 213 35% 93%;
+  --secondary-foreground: 213 50% 12%;
+  --muted: 213 30% 92%;
+  --muted-foreground: 213 20% 45%;
+  --accent: 199 73% 56%;           /* #3AAFE4 */
+  --accent-foreground: 0 0% 100%;
+  --destructive: 0 84% 60%;
+  --destructive-foreground: 0 0% 100%;
+  --border: 213 25% 87%;
+  --input: 213 25% 87%;
+  --ring: 199 73% 56%;
+  /* Sidebar */
+  --sidebar-background: 214 59% 26%;   /* deep navy */
+  --sidebar-foreground: 213 20% 85%;
+  --sidebar-primary: 0 0% 100%;
+  --sidebar-primary-foreground: 214 59% 26%;
+  --sidebar-accent: 214 55% 33%;
+  --sidebar-accent-foreground: 0 0% 100%;
+  --sidebar-border: 214 45% 32%;
+  --sidebar-ring: 199 73% 56%;
+  --sidebar-muted: 214 30% 55%;
+}
 
+/* ─── SWIFTBANQ theme ───────────────────────────────────────────── */
+/* Primary: #1A1A1A (charcoal)  Accent: #F5C800 (vivid gold)        */
+[data-org="swiftbanq"] {
+  --background: 0 0% 98%;          /* #FAFAFA */
+  --foreground: 0 0% 10%;
+  --card: 0 0% 100%;
+  --card-foreground: 0 0% 10%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 0 0% 10%;
+  --primary: 0 0% 10%;             /* #1A1A1A */
+  --primary-foreground: 48 100% 48%; /* yellow on dark */
+  --secondary: 0 0% 94%;
+  --secondary-foreground: 0 0% 10%;
+  --muted: 0 0% 92%;
+  --muted-foreground: 0 0% 47%;
+  --accent: 48 100% 48%;           /* #F5C800 */
+  --accent-foreground: 0 0% 8%;
+  --destructive: 0 84% 60%;
+  --destructive-foreground: 0 0% 100%;
+  --border: 0 0% 88%;
+  --input: 0 0% 88%;
+  --ring: 48 100% 48%;
+  /* Sidebar */
+  --sidebar-background: 0 0% 10%;  /* charcoal */
+  --sidebar-foreground: 0 0% 80%;
+  --sidebar-primary: 0 0% 100%;
+  --sidebar-primary-foreground: 0 0% 10%;
+  --sidebar-accent: 0 0% 17%;
+  --sidebar-accent-foreground: 48 100% 48%;
+  --sidebar-border: 0 0% 20%;
+  --sidebar-ring: 48 100% 48%;
+  --sidebar-muted: 0 0% 50%;
+}
+
+@layer base {
+  * { @apply border-border; }
   body {
     @apply bg-background text-foreground font-sans antialiased;
     font-family: 'DM Sans', system-ui, sans-serif;
   }
 }
 
+/* ─── Utility gradients ─────────────────────────────────────────── */
 @layer utilities {
   .stat-card-gradient {
-    background: linear-gradient(135deg, hsl(213 72% 16%) 0%, hsl(213 55% 28%) 100%);
+    background: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--primary) / 0.7) 100%);
   }
   .accent-gradient {
-    background: linear-gradient(135deg, hsl(0 70% 48%) 0%, hsl(0 65% 55%) 100%);
+    background: linear-gradient(135deg, hsl(var(--accent)) 0%, hsl(var(--accent) / 0.75) 100%);
   }
   .success-gradient {
     background: linear-gradient(135deg, hsl(152 60% 40%) 0%, hsl(152 50% 50%) 100%);
@@ -82,4 +138,107 @@
   .info-gradient {
     background: linear-gradient(135deg, hsl(210 80% 52%) 0%, hsl(210 70% 62%) 100%);
   }
+}
+
+/* ─── Login page themed classes ─────────────────────────────────── */
+
+/* === DEFAULT / shared base === */
+.login-bg-gradient {
+  background: linear-gradient(135deg, hsl(var(--primary) / 0.12) 0%, hsl(var(--accent) / 0.08) 50%, hsl(var(--primary) / 0.06) 100%);
+}
+.login-mesh-overlay {
+  background-image:
+    radial-gradient(ellipse at 20% 50%, hsl(var(--accent) / 0.07) 0%, transparent 60%),
+    radial-gradient(ellipse at 80% 20%, hsl(var(--primary) / 0.08) 0%, transparent 60%);
+}
+.login-orb-1 { background: hsl(var(--primary)); }
+.login-orb-2 { background: hsl(var(--accent)); }
+.login-orb-3 { background: hsl(var(--primary) / 0.5); }
+
+.login-logo-bg {
+  background: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--accent) / 0.8) 100%);
+}
+.login-logo-text { color: hsl(0 0% 100%); }
+.login-badge { background: hsl(var(--accent)); }
+.login-badge-icon { color: hsl(var(--accent-foreground)); }
+
+.login-brand-text { color: hsl(var(--primary)); }
+.login-hrm-text { color: hsl(var(--muted-foreground)); }
+.login-tagline-text { color: hsl(var(--muted-foreground)); letter-spacing: 0.05em; }
+
+.login-card {
+  background: hsl(var(--card));
+  border: 1px solid hsl(var(--border));
+}
+.login-accent-bar {
+  background: linear-gradient(90deg, hsl(var(--primary)), hsl(var(--accent)));
+}
+.login-card-title { color: hsl(var(--foreground)); }
+.login-card-subtitle { color: hsl(var(--muted-foreground)); }
+.login-label { color: hsl(var(--muted-foreground)); }
+
+.login-input {
+  background: hsl(var(--background));
+  border-color: hsl(var(--border));
+  color: hsl(var(--foreground));
+}
+.login-input:focus {
+  border-color: hsl(var(--ring));
+  box-shadow: 0 0 0 2px hsl(var(--ring) / 0.2);
+}
+.login-input::placeholder { color: hsl(var(--muted-foreground) / 0.7); }
+
+.login-org-trigger {
+  background: hsl(var(--background));
+  border-color: hsl(var(--border));
+  color: hsl(var(--foreground));
+}
+.login-org-trigger:hover { border-color: hsl(var(--ring) / 0.6); }
+.login-org-icon-bg { background: hsl(var(--primary) / 0.12); }
+.login-org-icon-text { color: hsl(var(--primary)); }
+.login-org-name { color: hsl(var(--foreground)); }
+.login-org-sub { color: hsl(var(--muted-foreground)); }
+.login-org-chevron { color: hsl(var(--muted-foreground)); }
+.login-org-dropdown {
+  background: hsl(var(--card));
+  border-color: hsl(var(--border));
+}
+.login-org-option { color: hsl(var(--foreground)); }
+.login-org-option:hover { background: hsl(var(--secondary)); }
+.login-org-option-active {
+  background: hsl(var(--primary) / 0.08);
+  border-left: 3px solid hsl(var(--accent));
+}
+
+.login-btn {
+  background: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--accent) / 0.85) 100%);
+  color: hsl(var(--primary-foreground));
+  border: none;
+  transition: opacity 0.2s, transform 0.1s;
+}
+.login-btn:hover { opacity: 0.92; transform: translateY(-1px); }
+.login-btn:active { transform: translateY(0); }
+
+.login-link { color: hsl(var(--accent)); }
+.login-footer-text { color: hsl(var(--muted-foreground) / 0.7); }
+
+/* === SWIFTBANQ overrides (yellow accent on dark btn) === */
+[data-org="swiftbanq"] .login-btn {
+  background: linear-gradient(135deg, hsl(48 100% 48%) 0%, hsl(45 100% 55%) 100%);
+  color: hsl(0 0% 8%);
+}
+[data-org="swiftbanq"] .login-link { color: hsl(48 100% 40%); }
+[data-org="swiftbanq"] .login-logo-text { color: hsl(0 0% 8%); }
+[data-org="swiftbanq"] .login-logo-bg {
+  background: linear-gradient(135deg, hsl(48 100% 48%) 0%, hsl(45 100% 60%) 100%);
+}
+[data-org="swiftbanq"] .login-badge { background: hsl(0 0% 15%); }
+[data-org="swiftbanq"] .login-badge-icon { color: hsl(48 100% 48%); }
+[data-org="swiftbanq"] .login-brand-text { color: hsl(0 0% 10%); }
+[data-org="swiftbanq"] .login-accent-bar {
+  background: linear-gradient(90deg, hsl(0 0% 10%), hsl(48 100% 48%));
+}
+[data-org="swiftbanq"] .login-org-option-active {
+  background: hsl(48 100% 48% / 0.1);
+  border-left: 3px solid hsl(48 100% 48%);
 }

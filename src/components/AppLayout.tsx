@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { useAuth } from "@/contexts/AuthContext";
+import { useOrg } from "@/contexts/OrganizationContext";
 import {
   LayoutDashboard,
   Users,
@@ -24,6 +25,7 @@ import {
   UserCheck,
   GitBranch,
   ShieldAlert,
+  Building2,
 } from "lucide-react";
 
 const navItems = [
@@ -50,6 +52,7 @@ const navItems = [
 export default function AppLayout({ children }: { children: React.ReactNode }) {
   const [collapsed, setCollapsed] = useState(false);
   const { user, role, signOut } = useAuth();
+  const { orgConfig } = useOrg();
   const location = useLocation();
 
   return (
@@ -61,19 +64,38 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
         } bg-sidebar text-sidebar-foreground flex flex-col transition-all duration-300 ease-in-out shrink-0`}
       >
         {/* Logo */}
-        <div className="flex items-center gap-3 px-5 h-16 border-b border-sidebar-border">
-          <div className="w-8 h-8 rounded-lg accent-gradient flex items-center justify-center shrink-0">
-            <span className="text-accent-foreground font-bold text-sm">F</span>
+        <div className="flex items-center gap-3 px-5 h-auto min-h-[72px] py-3 border-b border-sidebar-border">
+          <div className="w-9 h-9 rounded-xl flex items-center justify-center shrink-0 accent-gradient">
+            <span className="text-accent-foreground font-black text-base">
+              {orgConfig ? orgConfig.initial : "F"}
+            </span>
           </div>
           {!collapsed && (
-            <span className="font-bold text-lg text-sidebar-primary tracking-tight">
-              FUNDiT <span className="text-sidebar-muted font-normal text-sm">HRM</span>
-            </span>
+            <div className="overflow-hidden">
+              <span className="font-black text-base text-sidebar-primary tracking-tight block leading-tight">
+                {orgConfig ? orgConfig.label : "FUNDiT"}{" "}
+                <span className="text-sidebar-muted font-normal text-xs">HRM</span>
+              </span>
+              {orgConfig && (
+                <span className="text-sidebar-muted text-[10px] leading-tight block mt-0.5 truncate">
+                  {orgConfig.subtext}
+                </span>
+              )}
+            </div>
           )}
         </div>
 
+        {/* Org badge (collapsed) */}
+        {collapsed && orgConfig && (
+          <div className="flex justify-center py-2 border-b border-sidebar-border">
+            <div className="w-7 h-7 rounded-lg flex items-center justify-center accent-gradient">
+              <Building2 className="w-3.5 h-3.5 text-accent-foreground" />
+            </div>
+          </div>
+        )}
+
         {/* Navigation */}
-        <nav className="flex-1 py-4 px-3 space-y-1 overflow-y-auto">
+        <nav className="flex-1 py-4 px-3 space-y-0.5 overflow-y-auto">
           {navItems.map((item) => {
             const isActive = location.pathname === item.path;
             return (
@@ -86,7 +108,7 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
                     : "text-sidebar-foreground hover:bg-sidebar-accent/50 hover:text-sidebar-accent-foreground"
                 }`}
               >
-                <item.icon className="w-5 h-5 shrink-0" />
+                <item.icon className="w-4.5 h-4.5 shrink-0 w-[18px] h-[18px]" />
                 {!collapsed && <span>{item.label}</span>}
               </Link>
             );
@@ -109,10 +131,16 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
       <div className="flex-1 flex flex-col overflow-hidden">
         {/* Header */}
         <header className="h-16 bg-card border-b border-border flex items-center justify-between px-6 shrink-0">
-          <div>
+          <div className="flex items-center gap-3">
             <h1 className="text-lg font-semibold text-foreground">
               {navItems.find((i) => i.path === location.pathname)?.label || "Page"}
             </h1>
+            {orgConfig && (
+              <span className="hidden sm:inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-medium bg-accent/10 text-accent border border-accent/20">
+                <Building2 className="w-3 h-3" />
+                {orgConfig.name}
+              </span>
+            )}
           </div>
           <div className="flex items-center gap-4">
             <button className="relative p-2 rounded-lg hover:bg-secondary transition-colors">
@@ -122,7 +150,9 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
             <div className="flex items-center gap-3">
               <div className="w-9 h-9 rounded-full stat-card-gradient flex items-center justify-center">
                 <span className="text-primary-foreground text-sm font-semibold">
-                  {user?.user_metadata?.full_name?.charAt(0)?.toUpperCase() || user?.email?.charAt(0)?.toUpperCase() || "U"}
+                  {user?.user_metadata?.full_name?.charAt(0)?.toUpperCase() ||
+                    user?.email?.charAt(0)?.toUpperCase() ||
+                    "U"}
                 </span>
               </div>
               <div className="hidden sm:block">
@@ -145,9 +175,7 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
         </header>
 
         {/* Page content */}
-        <main className="flex-1 overflow-y-auto p-6">
-          {children}
-        </main>
+        <main className="flex-1 overflow-y-auto p-6">{children}</main>
       </div>
     </div>
   );
