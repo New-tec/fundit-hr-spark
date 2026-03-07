@@ -23,7 +23,7 @@ export default function Login() {
   const [isSignUp, setIsSignUp] = useState(false);
   const [fullName, setFullName] = useState("");
   const [password, setPassword] = useState("");
-  const [selectedOrg, setSelectedOrg] = useState<OrgId>("capitalcorp");
+  const [selectedOrg, setSelectedOrg] = useState<OrgId>("fundit");
   const [orgOpen, setOrgOpen] = useState(false);
   const [loading, setLoading] = useState(false);
 
