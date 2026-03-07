@@ -1,6 +1,6 @@
 import { createContext, useContext, useEffect, useState, ReactNode } from "react";
 
-export type OrgId = "capitalcorp" | "swiftbanq";
+export type OrgId = "fundit" | "capitalcorp" | "swiftbanq";
 
 export interface OrgConfig {
   id: OrgId;
@@ -11,6 +11,13 @@ export interface OrgConfig {
 }
 
 export const ORG_CONFIGS: Record<OrgId, OrgConfig> = {
+  fundit: {
+    id: "fundit",
+    name: "FUNDiT",
+    label: "FUNDiT",
+    subtext: "People | Performance | Progress",
+    initial: "F",
+  },
   capitalcorp: {
     id: "capitalcorp",
     name: "CAPITALCORP",

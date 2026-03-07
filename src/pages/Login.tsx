@@ -12,6 +12,7 @@ const nameToEmail = (name: string) =>
   `${name.trim().toLowerCase().replace(/\s+/g, ".")}@fundit.demo`;
 
 const ORG_OPTIONS: { id: OrgId; name: string; subtext: string }[] = [
+  { id: "fundit", name: "FUNDiT", subtext: "People | Performance | Progress" },
   { id: "capitalcorp", name: "CAPITALCORP", subtext: "Finance | Energy | Real Estate" },
   { id: "swiftbanq", name: "SWIFTBANQ", subtext: "Digital Banking & Fintech" },
 ];
