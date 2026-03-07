@@ -79,9 +79,9 @@
   --sidebar-muted: 214 30% 55%;
 }
 
-/* ─── SWIFTBANQ theme ───────────────────────────────────────────── */
+/* ─── SWISBANQ theme ───────────────────────────────────────────── */
 /* Primary: #1A1A1A (charcoal)  Accent: #F5C800 (vivid gold)        */
-[data-org="swiftbanq"] {
+[data-org="swisbanq"] {
   --background: 0 0% 98%;          /* #FAFAFA */
   --foreground: 0 0% 10%;
   --card: 0 0% 100%;

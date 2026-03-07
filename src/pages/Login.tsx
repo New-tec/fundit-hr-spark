@@ -14,7 +14,7 @@ const nameToEmail = (name: string) =>
 const ORG_OPTIONS: { id: OrgId; name: string; subtext: string }[] = [
   { id: "fundit", name: "FUNDiT", subtext: "People | Performance | Progress" },
   { id: "capitalcorp", name: "CAPITALCORP", subtext: "Finance | Energy | Real Estate" },
-  { id: "swiftbanq", name: "SWIFTBANQ", subtext: "Digital Banking & Fintech" },
+  { id: "swisbanq", name: "SWISBANQ", subtext: "Digital Banking & Fintech" },
 ];
 
 export default function Login() {
