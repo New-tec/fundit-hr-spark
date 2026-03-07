@@ -12,6 +12,7 @@ const nameToEmail = (name: string) =>
   `${name.trim().toLowerCase().replace(/\s+/g, ".")}@fundit.demo`;
 
 const ORG_OPTIONS: { id: OrgId; name: string; subtext: string }[] = [
+  { id: "fundit", name: "FUNDiT", subtext: "People | Performance | Progress" },
   { id: "capitalcorp", name: "CAPITALCORP", subtext: "Finance | Energy | Real Estate" },
   { id: "swiftbanq", name: "SWIFTBANQ", subtext: "Digital Banking & Fintech" },
 ];
@@ -22,7 +23,7 @@ export default function Login() {
   const [isSignUp, setIsSignUp] = useState(false);
   const [fullName, setFullName] = useState("");
   const [password, setPassword] = useState("");
-  const [selectedOrg, setSelectedOrg] = useState<OrgId>("capitalcorp");
+  const [selectedOrg, setSelectedOrg] = useState<OrgId>("fundit");
   const [orgOpen, setOrgOpen] = useState(false);
   const [loading, setLoading] = useState(false);
 
