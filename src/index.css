@@ -222,23 +222,23 @@
 .login-link { color: hsl(var(--accent)); }
 .login-footer-text { color: hsl(var(--muted-foreground) / 0.7); }
 
-/* === SWIFTBANQ overrides (yellow accent on dark btn) === */
-[data-org="swiftbanq"] .login-btn {
+/* === SWISBANQ overrides (yellow accent on dark btn) === */
+[data-org="swisbanq"] .login-btn {
   background: linear-gradient(135deg, hsl(48 100% 48%) 0%, hsl(45 100% 55%) 100%);
   color: hsl(0 0% 8%);
 }
-[data-org="swiftbanq"] .login-link { color: hsl(48 100% 40%); }
-[data-org="swiftbanq"] .login-logo-text { color: hsl(0 0% 8%); }
-[data-org="swiftbanq"] .login-logo-bg {
+[data-org="swisbanq"] .login-link { color: hsl(48 100% 40%); }
+[data-org="swisbanq"] .login-logo-text { color: hsl(0 0% 8%); }
+[data-org="swisbanq"] .login-logo-bg {
   background: linear-gradient(135deg, hsl(48 100% 48%) 0%, hsl(45 100% 60%) 100%);
 }
-[data-org="swiftbanq"] .login-badge { background: hsl(0 0% 15%); }
-[data-org="swiftbanq"] .login-badge-icon { color: hsl(48 100% 48%); }
-[data-org="swiftbanq"] .login-brand-text { color: hsl(0 0% 10%); }
-[data-org="swiftbanq"] .login-accent-bar {
+[data-org="swisbanq"] .login-badge { background: hsl(0 0% 15%); }
+[data-org="swisbanq"] .login-badge-icon { color: hsl(48 100% 48%); }
+[data-org="swisbanq"] .login-brand-text { color: hsl(0 0% 10%); }
+[data-org="swisbanq"] .login-accent-bar {
   background: linear-gradient(90deg, hsl(0 0% 10%), hsl(48 100% 48%));
 }
-[data-org="swiftbanq"] .login-org-option-active {
+[data-org="swisbanq"] .login-org-option-active {
   background: hsl(48 100% 48% / 0.1);
   border-left: 3px solid hsl(48 100% 48%);
 }
