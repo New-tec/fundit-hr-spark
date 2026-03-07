@@ -45,6 +45,40 @@
   }
 }
 
+/* ─── FUNDiT theme ──────────────────────────────────────────────── */
+/* Primary: #1B3050 (midnight navy)  Accent: #E03030 (bold red)      */
+[data-org="fundit"] {
+  --background: 210 20% 98%;
+  --foreground: 213 39% 15%;
+  --card: 0 0% 100%;
+  --card-foreground: 213 39% 15%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 213 39% 15%;
+  --primary: 213 72% 16%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 210 25% 95%;
+  --secondary-foreground: 213 39% 15%;
+  --muted: 210 20% 93%;
+  --muted-foreground: 213 10% 47%;
+  --accent: 0 70% 48%;
+  --accent-foreground: 0 0% 100%;
+  --destructive: 0 84% 60%;
+  --destructive-foreground: 0 0% 100%;
+  --border: 213 20% 90%;
+  --input: 213 20% 90%;
+  --ring: 0 70% 48%;
+  /* Sidebar */
+  --sidebar-background: 213 72% 16%;
+  --sidebar-foreground: 213 20% 85%;
+  --sidebar-primary: 0 0% 100%;
+  --sidebar-primary-foreground: 213 72% 16%;
+  --sidebar-accent: 213 60% 22%;
+  --sidebar-accent-foreground: 0 0% 100%;
+  --sidebar-border: 213 50% 22%;
+  --sidebar-ring: 0 70% 48%;
+  --sidebar-muted: 213 30% 40%;
+}
+
 /* ─── CAPITALCORP theme ─────────────────────────────────────────── */
 /* Primary: #1B3A6B (deep navy)  Accent: #3AAFE4 (electric cyan)   */
 [data-org="capitalcorp"] {
