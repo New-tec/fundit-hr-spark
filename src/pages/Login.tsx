@@ -174,7 +174,7 @@ export default function Login() {
 
                   {orgOpen && (
                     <div className="absolute top-full left-0 right-0 mt-1 login-org-dropdown rounded-md border shadow-xl z-50 overflow-hidden">
-                      {ORG_OPTIONS.map((org) => (
+                      {ORG_OPTIONS.filter((org) => org.id !== selectedOrg).map((org) => (
                         <button
                           key={org.id}
                           type="button"
