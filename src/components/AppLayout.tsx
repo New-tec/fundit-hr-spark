@@ -90,8 +90,7 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
           {!collapsed && (
             <div className="overflow-hidden">
               <span className="font-black text-base text-sidebar-primary tracking-tight block leading-tight">
-                {orgConfig ? orgConfig.label : "FUNDiT"}{" "}
-                <span className="text-sidebar-muted font-normal text-xs">HRM</span>
+                {orgConfig ? orgConfig.label : "FUNDiT"}
               </span>
               {orgConfig && (
                 <span className="text-sidebar-muted text-[10px] leading-tight block mt-0.5 truncate">
