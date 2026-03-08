@@ -1,6 +1,6 @@
 import { createContext, useContext, useEffect, useState, ReactNode } from "react";
 
-export type OrgId = "fundit" | "tesmarine" | "swisbanq";
+export type OrgId = "fundit" | "tesmarine" | "capitalcorp";
 
 export interface OrgConfig {
   id: OrgId;
@@ -25,12 +25,12 @@ export const ORG_CONFIGS: Record<OrgId, OrgConfig> = {
     subtext: "Time Charter | Diving Support | Technical & Logistics",
     initial: "T",
   },
-  swisbanq: {
-    id: "swisbanq",
-    name: "SWISBANQ",
-    label: "SwisBanq",
-    subtext: "Digital Banking & Fintech",
-    initial: "S",
+  capitalcorp: {
+    id: "capitalcorp",
+    name: "CAPITALCORP",
+    label: "CapitalCorp",
+    subtext: "Finance | Energy | Real Estate",
+    initial: "C",
   },
 };
 
