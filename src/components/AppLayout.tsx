@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from "react";
+import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { useAuth } from "@/contexts/AuthContext";
 import { useOrg, OrgId, ORG_CONFIGS } from "@/contexts/OrganizationContext";
@@ -25,8 +25,6 @@ import {
   UserCheck,
   GitBranch,
   ShieldAlert,
-  Building2,
-  ChevronsUpDown,
   Check,
 } from "lucide-react";
 
