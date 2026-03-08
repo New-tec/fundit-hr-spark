@@ -13,7 +13,7 @@ const nameToEmail = (name: string) =>
 
 const ORG_OPTIONS: { id: OrgId; name: string; subtext: string }[] = [
   { id: "fundit", name: "FUNDiT", subtext: "People | Performance | Progress" },
-  { id: "capitalcorp", name: "CAPITALCORP", subtext: "Finance | Energy | Real Estate" },
+  { id: "tesmarine", name: "TES Marine & Energy", subtext: "Time Charter | Diving Support | Technical & Logistics" },
   { id: "swisbanq", name: "SWISBANQ", subtext: "Digital Banking & Fintech" },
 ];
 
