@@ -160,7 +160,7 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
               >
                 <div className="px-3 pt-3 pb-1">
                   <p className="text-[10px] font-semibold uppercase tracking-widest text-sidebar-muted">
-                    Switch Organisation
+                    Organisations
                   </p>
                 </div>
                 {ORG_LIST.map((o) => (
