@@ -218,7 +218,7 @@ export default function Login() {
                   </>
                 ) : (
                   <>
-                    <LogIn className="w-4 h-4 mr-2" /> Sign In to {currentOrg.name}
+                    <LogIn className="w-4 h-4 mr-2" /> Sign In
                   </>
                 )}
               </Button>
