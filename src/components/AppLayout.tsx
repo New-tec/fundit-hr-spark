@@ -142,15 +142,11 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
                 orgPickerOpen ? "bg-sidebar-accent/50" : ""
               }`}
             >
-              <div className="w-6 h-6 rounded-md flex items-center justify-center accent-gradient shrink-0">
-                <span className="text-accent-foreground font-black text-[11px]">
-                  {orgConfig?.initial ?? "?"}
-                </span>
-              </div>
+              <Building2 className="w-4 h-4 shrink-0 text-sidebar-muted" />
               {!collapsed && (
                 <>
-                  <span className="flex-1 truncate text-left font-medium text-xs leading-tight">
-                    {orgConfig?.label ?? "Select org"}
+                  <span className="flex-1 truncate text-left font-medium text-xs leading-tight text-sidebar-muted">
+                    Switch Organisation
                   </span>
                   <ChevronsUpDown className="w-3.5 h-3.5 text-sidebar-muted shrink-0" />
                 </>
