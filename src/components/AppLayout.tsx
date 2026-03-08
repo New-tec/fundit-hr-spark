@@ -90,7 +90,7 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
         {collapsed && orgConfig && (
           <div className="flex justify-center py-2 border-b border-sidebar-border">
             <div className="w-7 h-7 rounded-lg flex items-center justify-center accent-gradient">
-              <Building2 className="w-3.5 h-3.5 text-accent-foreground" />
+              <span className="text-accent-foreground font-black text-xs">{orgConfig.initial}</span>
             </div>
           </div>
         )}
