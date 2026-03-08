@@ -84,7 +84,7 @@ export default function Login() {
         <div className="flex flex-col items-center gap-4 mb-8">
           <div className="relative">
             <div className="w-16 h-16 rounded-2xl login-logo-bg flex items-center justify-center shadow-2xl">
-              <span className="font-black text-3xl login-logo-text">F</span>
+              <span className="font-black text-3xl login-logo-text">{currentOrg.initial ?? currentOrg.name.charAt(0)}</span>
             </div>
             <div className="absolute -bottom-1 -right-1 w-6 h-6 rounded-full login-badge flex items-center justify-center shadow-lg">
               <Building2 className="w-3 h-3 login-badge-icon" />
@@ -92,10 +92,10 @@ export default function Login() {
           </div>
           <div className="text-center">
             <h1 className="text-2xl font-black tracking-tight login-brand-text">
-              FUNDiT <span className="login-hrm-text font-medium text-lg">HRM</span>
+              {currentOrg.name} <span className="login-hrm-text font-medium text-lg">HRM</span>
             </h1>
             <p className="text-sm mt-1 login-tagline-text font-medium tracking-wide">
-              People. Performance. Progress.
+              {currentOrg.subtext}
             </p>
           </div>
         </div>
