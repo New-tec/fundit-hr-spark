@@ -1,7 +1,7 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { useAuth } from "@/contexts/AuthContext";
-import { useOrg } from "@/contexts/OrganizationContext";
+import { useOrg, OrgId, ORG_CONFIGS } from "@/contexts/OrganizationContext";
 import {
   LayoutDashboard,
   Users,
@@ -26,6 +26,8 @@ import {
   GitBranch,
   ShieldAlert,
   Building2,
+  ChevronsUpDown,
+  Check,
 } from "lucide-react";
 
 const navItems = [
@@ -49,11 +51,26 @@ const navItems = [
   { icon: Settings, label: "Settings", path: "/settings" },
 ];
 
+const ORG_LIST = Object.values(ORG_CONFIGS);
+
 export default function AppLayout({ children }: { children: React.ReactNode }) {
   const [collapsed, setCollapsed] = useState(false);
+  const [orgPickerOpen, setOrgPickerOpen] = useState(false);
   const { user, role, signOut } = useAuth();
-  const { orgConfig } = useOrg();
+  const { org, orgConfig, setOrg } = useOrg();
   const location = useLocation();
+  const pickerRef = useRef<HTMLDivElement>(null);
+
+  // Close picker when clicking outside
+  useEffect(() => {
+    const handler = (e: MouseEvent) => {
+      if (pickerRef.current && !pickerRef.current.contains(e.target as Node)) {
+        setOrgPickerOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handler);
+    return () => document.removeEventListener("mousedown", handler);
+  }, []);
 
   return (
     <div className="flex h-screen overflow-hidden">
@@ -108,15 +125,80 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
                     : "text-sidebar-foreground hover:bg-sidebar-accent/50 hover:text-sidebar-accent-foreground"
                 }`}
               >
-                <item.icon className="w-4.5 h-4.5 shrink-0 w-[18px] h-[18px]" />
+                <item.icon className="shrink-0 w-[18px] h-[18px]" />
                 {!collapsed && <span>{item.label}</span>}
               </Link>
             );
           })}
         </nav>
 
+        {/* ── Org Switcher ── */}
+        <div className="px-3 py-3 border-t border-sidebar-border" ref={pickerRef}>
+          <div className="relative">
+            <button
+              onClick={() => setOrgPickerOpen((v) => !v)}
+              title="Switch organisation"
+              className={`flex items-center gap-2.5 w-full px-3 py-2.5 rounded-lg text-sm text-sidebar-foreground hover:bg-sidebar-accent/50 transition-colors ${
+                orgPickerOpen ? "bg-sidebar-accent/50" : ""
+              }`}
+            >
+              <div className="w-6 h-6 rounded-md flex items-center justify-center accent-gradient shrink-0">
+                <span className="text-accent-foreground font-black text-[11px]">
+                  {orgConfig?.initial ?? "?"}
+                </span>
+              </div>
+              {!collapsed && (
+                <>
+                  <span className="flex-1 truncate text-left font-medium text-xs leading-tight">
+                    {orgConfig?.label ?? "Select org"}
+                  </span>
+                  <ChevronsUpDown className="w-3.5 h-3.5 text-sidebar-muted shrink-0" />
+                </>
+              )}
+            </button>
+
+            {orgPickerOpen && (
+              <div
+                className={`absolute bottom-full mb-2 ${
+                  collapsed ? "left-full ml-2 w-56" : "left-0 right-0"
+                } rounded-xl border border-sidebar-border bg-sidebar shadow-2xl overflow-hidden z-50`}
+              >
+                <div className="px-3 pt-3 pb-1">
+                  <p className="text-[10px] font-semibold uppercase tracking-widest text-sidebar-muted">
+                    Switch Organisation
+                  </p>
+                </div>
+                {ORG_LIST.map((o) => (
+                  <button
+                    key={o.id}
+                    onClick={() => {
+                      setOrg(o.id as OrgId);
+                      setOrgPickerOpen(false);
+                    }}
+                    className={`w-full flex items-center gap-3 px-3 py-2.5 text-left transition-colors hover:bg-sidebar-accent/50 ${
+                      org === o.id ? "bg-sidebar-accent/30" : ""
+                    }`}
+                  >
+                    <div className="w-7 h-7 rounded-lg flex items-center justify-center accent-gradient shrink-0">
+                      <span className="text-accent-foreground font-black text-xs">{o.initial}</span>
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <p className="text-sm font-bold text-sidebar-primary truncate">{o.label}</p>
+                      <p className="text-[10px] text-sidebar-muted truncate">{o.subtext}</p>
+                    </div>
+                    {org === o.id && <Check className="w-3.5 h-3.5 text-sidebar-accent-foreground shrink-0" />}
+                  </button>
+                ))}
+                <div className="px-3 py-2 border-t border-sidebar-border">
+                  <p className="text-[9px] text-sidebar-muted">Switching won't sign you out</p>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+
         {/* Collapse toggle */}
-        <div className="px-3 py-3 border-t border-sidebar-border">
+        <div className="px-3 pb-3 border-t border-sidebar-border">
           <button
             onClick={() => setCollapsed(!collapsed)}
             className="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm text-sidebar-foreground hover:bg-sidebar-accent/50 w-full transition-colors"
