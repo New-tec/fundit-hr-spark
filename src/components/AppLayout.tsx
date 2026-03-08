@@ -136,7 +136,7 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
           <div className="relative">
             <button
               onClick={() => setOrgPickerOpen((v) => !v)}
-              title="Switch organisation"
+              title="Switch org"
               className={`flex items-center gap-2.5 w-full px-3 py-2.5 rounded-lg text-sm text-sidebar-foreground hover:bg-sidebar-accent/50 transition-colors ${
                 orgPickerOpen ? "bg-sidebar-accent/50" : ""
               }`}
@@ -144,8 +144,8 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
               <Building2 className="w-4 h-4 shrink-0 text-sidebar-muted" />
               {!collapsed && (
                 <>
-                  <span className="flex-1 truncate text-left font-medium text-xs leading-tight text-sidebar-muted">
-                    Switch Organisation
+                  <span className="flex-1 text-left font-medium text-xs text-sidebar-muted">
+                    Switch org
                   </span>
                   <ChevronsUpDown className="w-3.5 h-3.5 text-sidebar-muted shrink-0" />
                 </>
