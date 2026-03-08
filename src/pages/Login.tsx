@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { toast } from "@/components/ui/sonner";
-import { LogIn, UserPlus, Building2, ChevronDown } from "lucide-react";
+import { LogIn, UserPlus, Building2, Check } from "lucide-react";
 import { useOrg, OrgId, ORG_CONFIGS } from "@/contexts/OrganizationContext";
 
 const nameToEmail = (name: string) =>
@@ -24,7 +24,6 @@ export default function Login() {
   const [fullName, setFullName] = useState("");
   const [password, setPassword] = useState("");
   const [selectedOrg, setSelectedOrg] = useState<OrgId>("fundit");
-  const [orgOpen, setOrgOpen] = useState(false);
   const [loading, setLoading] = useState(false);
 
   // Preview theme on org selection
@@ -145,60 +144,35 @@ export default function Login() {
                 />
               </div>
 
-              {/* Organization selector */}
+              {/* Organization selector — always-visible list */}
               <div className="space-y-1.5">
                 <Label className="text-xs font-semibold uppercase tracking-wider login-label">
                   Organization
                 </Label>
-                <div className="relative">
-                  <button
-                    type="button"
-                    onClick={() => setOrgOpen(!orgOpen)}
-                    className="login-org-trigger w-full h-11 flex items-center justify-between px-3 rounded-md border text-sm transition-all"
-                  >
-                    <div className="flex items-center gap-2.5">
+                <div className="flex flex-col gap-1">
+                  {ORG_OPTIONS.map((org) => (
+                    <button
+                      key={org.id}
+                      type="button"
+                      onClick={() => setSelectedOrg(org.id)}
+                      className={`w-full flex items-center gap-2.5 px-3 py-2.5 rounded-md border text-left transition-all login-org-option ${
+                        selectedOrg === org.id ? "login-org-option-active" : ""
+                      }`}
+                    >
                       <div className="w-7 h-7 rounded login-org-icon-bg flex items-center justify-center shrink-0">
                         <span className="text-xs font-black login-org-icon-text">
-                          {currentOrg.name.charAt(0)}
+                          {org.name.charAt(0)}
                         </span>
                       </div>
-                      <div className="text-left">
-                        <p className="font-bold text-sm login-org-name">{currentOrg.name}</p>
-                        <p className="text-xs login-org-sub">{currentOrg.subtext}</p>
+                      <div className="flex-1 text-left">
+                        <p className="font-bold text-sm login-org-name">{org.name}</p>
+                        <p className="text-xs login-org-sub">{org.subtext}</p>
                       </div>
-                    </div>
-                    <ChevronDown
-                      className={`w-4 h-4 login-org-chevron transition-transform ${orgOpen ? "rotate-180" : ""}`}
-                    />
-                  </button>
-
-                  {orgOpen && (
-                    <div className="absolute top-full left-0 right-0 mt-1 login-org-dropdown rounded-md border shadow-xl z-50 overflow-hidden">
-                      {ORG_OPTIONS.filter((org) => org.id !== selectedOrg).map((org) => (
-                        <button
-                          key={org.id}
-                          type="button"
-                          onClick={() => {
-                            setSelectedOrg(org.id);
-                            setOrgOpen(false);
-                          }}
-                          className={`w-full flex items-center gap-2.5 px-3 py-2.5 text-left transition-all login-org-option ${
-                            selectedOrg === org.id ? "login-org-option-active" : ""
-                          }`}
-                        >
-                          <div className="w-7 h-7 rounded login-org-icon-bg flex items-center justify-center shrink-0">
-                            <span className="text-xs font-black login-org-icon-text">
-                              {org.name.charAt(0)}
-                            </span>
-                          </div>
-                          <div>
-                            <p className="font-bold text-sm login-org-name">{org.name}</p>
-                            <p className="text-xs login-org-sub">{org.subtext}</p>
-                          </div>
-                        </button>
-                      ))}
-                    </div>
-                  )}
+                      {selectedOrg === org.id && (
+                        <Check className="w-4 h-4 shrink-0 login-org-chevron" />
+                      )}
+                    </button>
+                  ))}
                 </div>
               </div>
 
