@@ -53,22 +53,9 @@ const ORG_LIST = Object.values(ORG_CONFIGS);
 
 export default function AppLayout({ children }: { children: React.ReactNode }) {
   const [collapsed, setCollapsed] = useState(false);
-  const [orgPickerOpen, setOrgPickerOpen] = useState(false);
   const { user, role, signOut } = useAuth();
   const { org, orgConfig, setOrg } = useOrg();
   const location = useLocation();
-  const pickerRef = useRef<HTMLDivElement>(null);
-
-  // Close picker when clicking outside
-  useEffect(() => {
-    const handler = (e: MouseEvent) => {
-      if (pickerRef.current && !pickerRef.current.contains(e.target as Node)) {
-        setOrgPickerOpen(false);
-      }
-    };
-    document.addEventListener("mousedown", handler);
-    return () => document.removeEventListener("mousedown", handler);
-  }, []);
 
   return (
     <div className="flex h-screen overflow-hidden">
