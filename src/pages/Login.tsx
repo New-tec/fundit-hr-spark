@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { toast } from "@/components/ui/sonner";
-import { LogIn, UserPlus, Building2, ChevronDown } from "lucide-react";
+import { LogIn, UserPlus, Building2, Check } from "lucide-react";
 import { useOrg, OrgId, ORG_CONFIGS } from "@/contexts/OrganizationContext";
 
 const nameToEmail = (name: string) =>
