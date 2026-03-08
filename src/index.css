@@ -113,38 +113,38 @@
   --sidebar-muted: 202 30% 52%;
 }
 
-/* ─── SWISBANQ theme ───────────────────────────────────────────── */
-/* Primary: #1A1A1A (charcoal)  Accent: #F5C800 (vivid gold)        */
-[data-org="swisbanq"] {
-  --background: 0 0% 98%;          /* #FAFAFA */
-  --foreground: 0 0% 10%;
+/* ─── CAPITALCORP theme ─────────────────────────────────────────── */
+/* Primary: #1B3A6B (deep navy)  Accent: #3AAFE4 (electric cyan)   */
+[data-org="capitalcorp"] {
+  --background: 213 40% 97%;
+  --foreground: 213 50% 12%;
   --card: 0 0% 100%;
-  --card-foreground: 0 0% 10%;
+  --card-foreground: 213 50% 12%;
   --popover: 0 0% 100%;
-  --popover-foreground: 0 0% 10%;
-  --primary: 0 0% 10%;             /* #1A1A1A */
-  --primary-foreground: 48 100% 48%; /* yellow on dark */
-  --secondary: 0 0% 94%;
-  --secondary-foreground: 0 0% 10%;
-  --muted: 0 0% 92%;
-  --muted-foreground: 0 0% 47%;
-  --accent: 48 100% 48%;           /* #F5C800 */
-  --accent-foreground: 0 0% 8%;
+  --popover-foreground: 213 50% 12%;
+  --primary: 214 59% 26%;          /* #1B3A6B */
+  --primary-foreground: 0 0% 100%;
+  --secondary: 213 35% 93%;
+  --secondary-foreground: 213 50% 12%;
+  --muted: 213 30% 92%;
+  --muted-foreground: 213 20% 45%;
+  --accent: 199 73% 56%;           /* #3AAFE4 */
+  --accent-foreground: 0 0% 100%;
   --destructive: 0 84% 60%;
   --destructive-foreground: 0 0% 100%;
-  --border: 0 0% 88%;
-  --input: 0 0% 88%;
-  --ring: 48 100% 48%;
+  --border: 213 25% 87%;
+  --input: 213 25% 87%;
+  --ring: 199 73% 56%;
   /* Sidebar */
-  --sidebar-background: 0 0% 10%;  /* charcoal */
-  --sidebar-foreground: 0 0% 80%;
+  --sidebar-background: 214 59% 26%;
+  --sidebar-foreground: 213 20% 85%;
   --sidebar-primary: 0 0% 100%;
-  --sidebar-primary-foreground: 0 0% 10%;
-  --sidebar-accent: 0 0% 17%;
-  --sidebar-accent-foreground: 48 100% 48%;
-  --sidebar-border: 0 0% 20%;
-  --sidebar-ring: 48 100% 48%;
-  --sidebar-muted: 0 0% 50%;
+  --sidebar-primary-foreground: 214 59% 26%;
+  --sidebar-accent: 214 55% 33%;
+  --sidebar-accent-foreground: 0 0% 100%;
+  --sidebar-border: 214 45% 32%;
+  --sidebar-ring: 199 73% 56%;
+  --sidebar-muted: 214 30% 55%;
 }
 
 @layer base {
