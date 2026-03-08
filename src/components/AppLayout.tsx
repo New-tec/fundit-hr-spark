@@ -212,12 +212,6 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
             <h1 className="text-lg font-semibold text-foreground">
               {navItems.find((i) => i.path === location.pathname)?.label || "Page"}
             </h1>
-            {orgConfig && (
-              <span className="hidden sm:inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-medium bg-accent/10 text-accent border border-accent/20">
-                <Building2 className="w-3 h-3" />
-                {orgConfig.name}
-              </span>
-            )}
           </div>
           <div className="flex items-center gap-4">
             <button className="relative p-2 rounded-lg hover:bg-secondary transition-colors">
