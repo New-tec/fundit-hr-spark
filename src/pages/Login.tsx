@@ -92,10 +92,10 @@ export default function Login() {
           </div>
           <div className="text-center">
             <h1 className="text-2xl font-black tracking-tight login-brand-text">
-              {currentOrg.name} <span className="login-hrm-text font-medium text-lg">HRM</span>
+              HR<span className="login-hrm-text font-medium text-lg">M</span>
             </h1>
             <p className="text-sm mt-1 login-tagline-text font-medium tracking-wide">
-              {currentOrg.subtext}
+              Human Resource Management
             </p>
           </div>
         </div>
@@ -218,7 +218,7 @@ export default function Login() {
                   </>
                 ) : (
                   <>
-                    <LogIn className="w-4 h-4 mr-2" /> Sign In to {currentOrg.name}
+                    <LogIn className="w-4 h-4 mr-2" /> Sign In
                   </>
                 )}
               </Button>
