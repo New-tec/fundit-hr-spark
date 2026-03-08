@@ -79,38 +79,38 @@
   --sidebar-muted: 213 30% 40%;
 }
 
-/* ─── CAPITALCORP theme ─────────────────────────────────────────── */
-/* Primary: #1B3A6B (deep navy)  Accent: #3AAFE4 (electric cyan)   */
-[data-org="capitalcorp"] {
-  --background: 213 40% 97%;       /* #F5F8FC */
-  --foreground: 213 50% 12%;
+/* ─── TES Marine & Energy theme ────────────────────────────────── */
+/* Primary: #003D5B (deep ocean teal)  Accent: #00A896 (seafoam)   */
+[data-org="tesmarine"] {
+  --background: 200 35% 97%;       /* light ocean mist */
+  --foreground: 200 60% 10%;
   --card: 0 0% 100%;
-  --card-foreground: 213 50% 12%;
+  --card-foreground: 200 60% 10%;
   --popover: 0 0% 100%;
-  --popover-foreground: 213 50% 12%;
-  --primary: 214 59% 26%;          /* #1B3A6B */
+  --popover-foreground: 200 60% 10%;
+  --primary: 202 100% 18%;         /* #003D5B deep ocean */
   --primary-foreground: 0 0% 100%;
-  --secondary: 213 35% 93%;
-  --secondary-foreground: 213 50% 12%;
-  --muted: 213 30% 92%;
-  --muted-foreground: 213 20% 45%;
-  --accent: 199 73% 56%;           /* #3AAFE4 */
+  --secondary: 200 30% 92%;
+  --secondary-foreground: 200 60% 10%;
+  --muted: 200 25% 91%;
+  --muted-foreground: 200 20% 45%;
+  --accent: 174 100% 33%;          /* #00A896 seafoam teal */
   --accent-foreground: 0 0% 100%;
   --destructive: 0 84% 60%;
   --destructive-foreground: 0 0% 100%;
-  --border: 213 25% 87%;
-  --input: 213 25% 87%;
-  --ring: 199 73% 56%;
+  --border: 200 25% 86%;
+  --input: 200 25% 86%;
+  --ring: 174 100% 33%;
   /* Sidebar */
-  --sidebar-background: 214 59% 26%;   /* deep navy */
-  --sidebar-foreground: 213 20% 85%;
+  --sidebar-background: 202 100% 18%;  /* deep ocean */
+  --sidebar-foreground: 200 20% 82%;
   --sidebar-primary: 0 0% 100%;
-  --sidebar-primary-foreground: 214 59% 26%;
-  --sidebar-accent: 214 55% 33%;
+  --sidebar-primary-foreground: 202 100% 18%;
+  --sidebar-accent: 202 80% 25%;
   --sidebar-accent-foreground: 0 0% 100%;
-  --sidebar-border: 214 45% 32%;
-  --sidebar-ring: 199 73% 56%;
-  --sidebar-muted: 214 30% 55%;
+  --sidebar-border: 202 60% 28%;
+  --sidebar-ring: 174 100% 33%;
+  --sidebar-muted: 202 30% 52%;
 }
 
 /* ─── SWISBANQ theme ───────────────────────────────────────────── */
