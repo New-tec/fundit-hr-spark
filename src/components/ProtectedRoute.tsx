@@ -1,8 +1,15 @@
-import { Navigate } from "react-router-dom";
+import { Navigate, useLocation } from "react-router-dom";
 import { useAuth } from "@/contexts/AuthContext";
 
-export default function ProtectedRoute({ children }: { children: React.ReactNode }) {
-  const { user, loading } = useAuth();
+interface Props {
+  children: React.ReactNode;
+  /** Roles allowed to access this route. If omitted, any authenticated user. */
+  allow?: Array<"admin" | "hr_staff" | "employee">;
+}
+
+export default function ProtectedRoute({ children, allow }: Props) {
+  const { user, role, loading } = useAuth();
+  const location = useLocation();
 
   if (loading) {
     return (
@@ -19,6 +26,14 @@ export default function ProtectedRoute({ children }: { children: React.ReactNode
 
   if (!user) {
     return <Navigate to="/login" replace />;
+  }
+
+  // Auto-route by role if user lands on a section they shouldn't access
+  if (allow && role && !allow.includes(role)) {
+    const target = role === "employee" ? "/me" : "/";
+    if (location.pathname !== target) {
+      return <Navigate to={target} replace />;
+    }
   }
 
   return <>{children}</>;
